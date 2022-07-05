@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Insertar Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/assets/img/favicon/favicon.ico">
+    <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#000ac9">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../css/detalles.css">
+    <title>Detalles de un Proyecto</title>
+</head>
+<body>
+    <!-- Navegador -->
+    <nav class='nav-fixed'>
+        <a href="../../index.html" rel="noopener noreferrer" class="icon">
+            <img src="../img/resources/unerg-logo-blanco.png" alt="">
+        </a>
+
+        <a href="../../index.html" rel="noopener noreferrer" class = "inicio">Inicio</a>
+        <!-- <a href="#Contacto" rel="noopener noreferrer" class = "opciones">Opciones</a> -->
+
+        <svg id = "exit" class="w-6 h-6" width = "40px" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+
+        <!-- Menu de hamburguesa -->
+        <div class="icono-menu">
+            <img src="img/icons/open-menu.png" id="icono-menu">
+        </div>
+
+        <!-- Lista de opciones -->
+        <div class="cont-menu active" id="menu">
+            <ul>
+                <a href="#" class="op1">Inicio</a>
+                <a href="#Contacto" class="op6">Opciones</a>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Seccion de la informacion del proyecto -->
+    <section class="contenido-general">
+
+        <!-- <header class="header">
+
+        </header> -->
+        
+
+        <div class="content">
+            
+            <div class="multimedia">
+
+                <div class="img-principal">
+                    <div class="default-img">
+                        <!-- <img src="/assets/img/backgrounds/bg-login.jpg" alt="">  -->
+                        <img src="/assets/img/default-img.jpg" alt="">
+                    </div>
+
+                    <div class="more-imgs">
+                    
+                        <div class="imagen-port">
+                            <img src="/assets/img/img1.jpg" alt="">
+                        </div>
+    
+                        <div class="imagen-port">
+                            <img src="/assets/img/img2.jpg" alt="">
+                        </div>
+    
+                        <div class="imagen-port">
+                            <img src="/assets/img/img3.jpg" alt="">
+                        </div>
+    
+                        <div class="imagen-port">
+                            <img src="/assets/img/img4.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="text-content">
+                
+                <div class="contenido-texto">
+                    <h2>Titulo</h2>
+                    <input type="text" name="titulo-proyecto" id="" placeholder="Titulo del proyecto">
+
+                    <h3>Descripcion</h3>
+                    <p class ="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae tempora saepe nemo nobis officiis numquam, corrupti neque dolorem maiores blanditiis! Atque exercitationem debitis architecto deleniti quia. Amet distinctio exercitationem cum!</p>
+                    <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Este proyecto consiste en..."></textarea>
+                    
+                    <h3>Bachilleres</h3>
+                    <table>
+                        <tr>
+                            <th> Nombres y Apellidos</th>
+                            <th>Cedula</th>
+                            <th>Telefono</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="" id="" value="Pedro Augusto Hernandez Perez"></td>
+                            <td><input type="text" name="" id="" value="20.000.000"></td>
+                            <td><input type="text" name="" id="" value="0412-000-0000"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="" id="" value="Maria Gabriela Hernandez Torrealba"></td>
+                            <td><input type="text" name="" id="" value="21.000.000"></td>
+                            <td><input type="text" name="" id="" value="0412-000-0000"></td>
+                        </tr>
+                    </table>
+
+                    <h3>Tutores</h3>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Cedula</th>
+                            <th>Telefono</th>
+                        </tr>
+                        <tr>
+                            <th>Tutor Comunitario</th>
+                            <td><input type="text" name="" id="" value="Pedro Augusto Hernandez Perez"></td>
+                            <td><input type="text" name="" id="" value="20.000.000"></td>
+                            <td><input type="text" name="" id="" value="0412-000-0000"></td>
+                        </tr>
+                        <tr>
+                            <th>Tutor Academico</th>
+                            <td><input type="text" name="" id="" value="Pedro Augusto Hernandez Perez"></td>
+                            <td><input type="text" name="" id="" value="20.000.000"></td>
+                            <td><input type="text" name="" id="" value="0412-000-0000"></td>
+                        </tr>
+                        <tr>
+                            <th>Tutor Institucional</th>
+                            <td><input type="text" name="" id="" value="Pedro Augusto Hernandez Perez"></td>
+                            <td><input type="text" name="" id="" value="20.000.000"></td>
+                            <td><input type="text" name="" id="" value="0412-000-0000"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            
+        </div>
+        
+        <div class = "text-content-dos">
+            <div>
+                <h3>Comunidad</h3>
+
+                <table>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Municipio</th>
+                        <th>Parroquia</th>
+                        <th>Ciudad</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="" value="Guarico"></td>
+                        <td><input type="text" name="" id="" value="Roscio"></td>
+                        <td><input type="text" name="" id="" value="San Juan de los Morros"></td>
+                        <td><input type="text" name="" id="" value="San Juan de los Morros"></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div>
+                <h3>Tiempo</h3>
+                
+                <table>
+                    <tr>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Culminacion</th>
+                        <th>Semanas de Duracion</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="" value="10/03/2022"></td>
+                        <td><input type="text" name="" id="" value="15/06/2022"></td>
+                        <td><input type="number" name="" id="" value="16"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="btns">
+            <div class="guardar" id="guardar">
+                Guardar
+            </div>
+
+            <div class="borrar" id="borrar">
+                Cancelar
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de aceptar borrar un proyecto -->
+    <div class="modal-container">
+        <div class="modal modal-close">
+            <p class= "close">X</p>
+
+            <div class="modal-textos">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/detalles.js"></script>
+
+    <footer>
+        <div class="icon-footer">
+            <img src="/assets/img/resources/unerg-logo-blanco.png" alt="">
+            <div class="footer-textos-icon">
+                <h4>GPSC | UNERG</h4>
+                <p>Proyectos de Servicio Comunitario</p>
+            </div>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+    </footer>
+</body>
+</html>

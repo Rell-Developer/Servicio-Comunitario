@@ -3,8 +3,12 @@
     padding: 0;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
-    background: rgb(248, 248, 248);
+    background: rgb(236, 236, 236);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -47,6 +51,30 @@ nav a{
 nav > a:hover:not(.icon, .proyectos-btn, .NuevoProyecto-btn){
 
     font-size: 19.5px;
+}
+
+/* Buscador del nav */
+.content-buscador{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* buscador */
+.buscador{
+    height: 40px;
+
+    transition: 1s;
+    border-radius: 6px;
+    width: 70%;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: .2rem 0;
+    font-size: .9rem;
+
+    margin: 25px;
 }
 
 .NuevoProyecto-btn:hover{
@@ -164,9 +192,11 @@ svg:hover{
 /* Contenido General */
 .contenido-general{
     width: 100%;
-    height: 700px;
+    height: 100%;
 
     background: rgb(236, 236, 236);
+
+    margin-bottom: 50px;
 }
 
 .header{
@@ -177,7 +207,7 @@ svg:hover{
     padding-top: 150px;
     padding-bottom: 150px;
 
-    height: 20vh;
+    height: 30vh;
     width: 100%;
 
     /* background: #bc4e9c;   */
@@ -221,7 +251,7 @@ svg:hover{
 /* contenido */
 .Contenido{
 
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-color: rgb(235, 235, 235);
 
@@ -288,6 +318,7 @@ svg:hover{
     align-items: center;
     flex-direction: column;
     text-align: center;
+    border-radius: 10px;
 }
 
 .hover-galeria img{
@@ -305,168 +336,63 @@ svg:hover{
     transform: scale(1);
 }
 
-
-/* Registro */
-
-.modal-container{
-    /* opacity: 0;
-    visibility: hidden; */
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal{
-    width: 90%;
-    height: 80%;
-    background-color: #fff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
-    transition: transform 0.8s;
-    transform: translateY(0%);
-
-    /* Bordes redondos al model */
-    border-radius: 10px 10px 10px 10px;
-
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-block:initial;
-}
-
-.close{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background: #c44a4a;
-    color: #fff;
-    line-height: 25px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-/* 
-.modal-close{
-    transform: translateY(-200%);
-} */
-
-/* Texto sobre registrar proyecto */
-
-.modal-textos{
-    height: 100%;
-    margin-top: 6%;
-}
-
-.titulo-carta{
-    color: #0670e9;
-    font-size: 43px;
-    margin-bottom: 10%;
-}
-
-.descripcion-carta{
-    width: 80%;
-    text-align: left;
-    margin-left: 12%;
-    font-size: 17px;
-}
-
-.titulo-descripcion{
-    width: 100%;
-}
-
-.datos-principales{
-    width: 50%;
-}
-
-.titulo-input{
-    width: 100%;
-    align-items: center;
-    text-align: center;
-}
-
-.modal-textos input:not([type="submit"]){
-    width: 20%;
-    margin-bottom: 2rem;
-    margin-right: 50px;
-    background-color: transparent;
-    border: none;
-    border-bottom: rgb(22, 22, 22) thin solid;
-    outline: none;
-    padding: .8rem 0;
-    font-size: .9rem;
-    color: rgb(22, 22, 22);
-    text-align: center;
-}
-
-.modal-textos div{
-    margin-bottom: 10px;
-
-    width: 100%;
-}
-
-.Tutor-Academico div, .Tutor-Institucional div, .Tutor-Comunitario div, .bachilleres div, .datos-principales div, .comunidad div, .Fecha div{
-    display: flex;
-    width: 100%;
-
-    justify-content: space-around;
-
-}
-
-.comunidad input{
-    width: 15%;
-}
-
-.modal-textos .img-principal{
-    width: 20%;
-    height: 35vh;
-
-    margin: 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, hsl(281, 80%, 32%, 0.5), rgba(118, 62, 145, 0.5)), url(../img/backgrounds/imagen.png);  
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsl(281, 80%, 32%, 0.5), rgba(118, 62, 145, 0.5)), url(../img/backgrounds/imagen.png); 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-}
-
 h4{
     margin: 40px;
     font-size: 25px;
 }
 
-.btn-registrar{
-
-    padding: 15px;
-
-    background-color: #0670e9;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    transition: .4s;
-    margin-bottom: 70px;
+.filtro{
+    display:none;
 }
 
-.btn-registrar:hover{
-    transform: scale(1.1);
-    cursor: pointer;
+footer{
+    height: 150px;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0;
+
+    background-color:#0670e9;
 }
-/* Fin de registrar proyecto */
+
+footer .icon-footer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 35%;
+    /* margin: 10px; */
+
+    /* background: red; */
+}
+
+footer .icon-footer img{
+    width: 100px;
+    height: 40px;
+    /* margin: 30px 0px 0px 0px; */
+}
+
+footer .icon-footer .footer-textos-icon{
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    color:white;
+
+}
+
+footer .icon-footer .footer-textos-icon h4{
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+
+    font-size: 20px;
+}
+
+footer .icon-footer .footer-textos-icon p{
+
+    font-size: 15px;
+}

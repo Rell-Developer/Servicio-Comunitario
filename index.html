@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar | GPSC - UNERG</title>
+    
+    <!-- Insertar Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon.ico">
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.svg" color="#000ac9">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>GPSC - UNERG</title>
     <link rel="stylesheet" href="assets/css/administrar.css">
 </head>
 <body>
@@ -15,6 +26,7 @@
         <a href="#" rel="noopener noreferrer" class = "opciones">Inicio</a>
         <!-- <a href="#Contacto" rel="noopener noreferrer" class = "opciones">Opciones</a> -->
 
+        <a href="assets/resources/login.html" id="login">Iniciar Sesion</a>
         <svg id = "exit" class="w-6 h-6" width = "40px" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
 
         <!-- Menu de hamburguesa -->
@@ -36,10 +48,15 @@
     <div class="contenido-general">
         <div class="header">
             <h1 class="titulo-header">Administrador | GPSC - UNERG</h1>
-            <p class="">Administra los Proyectos de Servicio Comunitario</p>
+            <p class="">Gestor de Proyectos de Servicio Comunitario</p>
+
+            <div class="content-buscador">
+                <input type="text" class="buscador" id="buscador">
+            </div>
+
             <div class="btns-header">
                 <a  
-                    href="/" 
+                    href="#Contenido" 
                     class="proyectos-btn"
                 >Proyectos</a>
                 <a 
@@ -48,177 +65,10 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-=======
-        <div class="modal-container">
-
-            <div class="modal modal-close">
-                <p class= "close">X</p>
-
-                <div class="modal-textos">
-                    <h3 class="titulo-carta titulo">Registrar un Nuevo Proyecto</h3>
-                    
-                    <div class="titulo-descripcion">
-
-                        
-
-                        <div class="datos-principales">
-                            
-                            <!-- <div class="img-principal">
-                                <svg class="w-6 h-6" width=" 40px " fill="none" stroke="#0670e9" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <p>Agrega una miniatura</p>
-                            </div> -->
-
-                            <div>
-                                <label for="titulo-proyecto">Titulo</label>
-                                <label for="description">Descripcion</label>
-                            </div>
-                            
-                            <div>
-                                <input type="text" name="titulo-proyecto" id="" placeholder="Proyecto Servicio Comunitario">
-                                <input type="tel" name="description" id="" placeholder="Este proyecto consiste en...">
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-
-                    <!-- Bachilleres -->
-                    <div class="bachilleres">
-                        <h4>Bachilleres</h4>
-
-                        <div>
-                            <label for="bachiller">Bachiller</label>
-                            <label for="bachiller-ci">Cedula</label>
-                            <label for="bachiller-tlf">Telefono</label>
-                        </div>
-
-                        <div>   
-                            <input type="text" name="bachiller" id="" placeholder="Nombre y Apellido">
-                            <input type="text" name="bachiller-ci" id="" placeholder="20000000">
-                            <input type="text" name="bachiller-tlf" id="" placeholder="04121234567">
-                        </div>
-
-                    </div>
-
-                    <svg id="add-bach" class="w-6 h-6" width=" 40px " fill="none" stroke="#0670e9" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                    <!-- Comunidad -->
-                    <div class="comunidad">
-                        <h4>Comunidad</h4>
-
-                        <div>
-                            <label for="Nombre-Com">Nombre de la Comunidad</label>
-                            <label for="Parroquia">Parroquia</label>
-                            <label for="Municipio">Municipio</label>
-                            <label for="Estado">Estado</label>
-                        </div>
-
-                        <div>   
-                            <input type="text" name="Nombre-Com" id="" placeholder="Banco Obrero">
-                            <input type="text" name="Parroquia" id="" placeholder="Parroquia">
-                            <input type="text" name="Municipio" id="" placeholder="Juan German Roscio">
-                            <input type="text" name="Municipio" id="" placeholder="Guárico">
-                        </div>
-
-                    </div>
-
-                    <!-- Tutores -->
-                    <div class="tutores">
-                        <h4 for="tutores">Tutores</h4>
-
-                        <!-- Tutor Academico -->
-                        <div class = "Tutor-Academico" >
-
-                            <div>
-                                <label for="tutor-aca">Tutor Academico</label>
-                                <label for="tutor-aca-ci">Cedula</label>
-                                <label for="tutor-aca-tlf">Telefono</label>
-                            </div>
-                            
-
-                            <div>
-                                <input type="text" name="tutor-aca" id="" placeholder="Nombre y Apellido">
-                                <input type="text" name="tutor-aca-ci" id="" placeholder="20000000">
-                                <input type="text" name="tutor-aca-tlf" id="" placeholder="04121234567">                                
-                            </div>
-
-                        </div>
-
-                        <!-- Tutor Comunitario -->
-                        <div class="Tutor-Comunitario">
-
-                            <div>
-                                <label for="tutor-comu">Tutor Comunitario</label>
-                                <label for="tutor-comu-ci">Cedula</label>
-                                <label for="tutor-comu-tlf">Telefono</label>
-                            </div>
-                            
-                            <div>
-                                <input type="text" name="tutor-comu" id="" placeholder="Nombre y Apellido">
-                                <input type="text" name="tutor-comu-ci" id="" placeholder="20000000">
-                                <input type="text" name="tutor-comu-tlf" id="" placeholder="04121234567">
-                            </div>
-                        </div>
-
-                        <!-- Tutor Institucional -->
-                        <div class="Tutor-Institucional">
-                            <div>
-                                <label for="tutor-ins">Tutor Institucional</label>
-                                <label for="tutor-ins-ci">Cedula</label>
-                                <label for="tutor-ins-tlf">Telefono</label>
-                            </div>
-                            
-                            <div>
-                                <input type="text" name="tutor-ins" id="" placeholder="Nombre y Apellido">
-                                <input type="text" name="tutor-ins-ci" id="" placeholder="20000000">
-                                <input type="text" name="tutor-ins-tlf" id="" placeholder="04121234567">
-                            </div>
-                            
-                        </div>      
-
-                        <!-- Fecha -->
-                        <div class="Fecha">
-                            <h4>Fecha de Cumplimiento</h4>
-    
-                            <div>
-                                <label for="F-Inicio">Fecha de Inicio</label>
-                                <label for="F-Culminacion">Fecha de Culminación</label>
-                                <label for="F-Semanas">Semanas de Duracion del Servicio Comunitario</label>
-                            </div>
-    
-                            <div>   
-                                <input type="date" name="F-Inicio" id="">
-                                <input type="date" name="F-Culminacion" id="">
-                                <input type="number" name="F-Semanas" id="">
-                            </div>
-    
-                        </div>
-
-                        <input type="file" name="" id="">
-
-                        <input type="submit" class = "btn-registrar" value="Registrar Proyecto">
-                    </div>
-                </div>
-            </div>
-        </div>
-
->>>>>>> e068a692ce98f656453e3c6588b633981494101d
-        <div class="Contenido">
+        <div class="Contenido" id="Contenido">
             <h2 class="titulo-contenido">Proyectos</h2>
 
             <div class="contenido-proyectos">
-
-                <!-- <div class="block">
-
-                    <img src="img/icons/unerg-logo.png" alt="">
-
-                    <div class="info">
-                        <p>Titulo</p>
-
-                        <p>08 Jun 2022</p>
-                    </div>
-                </div> -->
 
                 <section class="portafolio" id="Portafolio">
                     <div class="contenedor">
@@ -227,79 +77,117 @@
                                 <img src="assets/img/resources/cards/img1.png">
 
                                 <div class="hover-galeria cta1">
-                                    <p><b>TITULO DEL PROYECTO</b></p>
+                                    <p><b>Manos</b></p>
                                 </div>
                             </div>
+
                             <div class="imagen-port">
                                 <img src="assets/img/resources/cards/img2.png">
                                 <div class="hover-galeria cta2">
                                     
-                                    <p><b>TITULO DEL PROYECTO</b></p>
+                                    <p><b>Beso</b></p>
                                 </div>
                             </div>
+
                             <div class="imagen-port">
                                 <img src="assets/img/resources/cards/img3.jpg">
                                 <div class="hover-galeria cta3">
-                                    <p><b>TITULO DEL PROYECTO</b></p>
+                                    <p><b>Moon Knight</b></p>
                                 </div>
                             </div>
+
                             <div class="imagen-port">
                                 <img src="assets/img/resources/cards/img4.png" alt="">
                                 <div class="hover-galeria cta4">
-                                    <p><b>TITULO DEL PROYECTO</b></p>
+                                    <p><b>Muga Fubol</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img1.png">
+
+                                <div class="hover-galeria cta1">
+                                    <p><b>hands</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img2.png">
+                                <div class="hover-galeria cta2">
+                                    
+                                    <p><b>kiss</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img3.jpg">
+                                <div class="hover-galeria cta3">
+                                    <p><b>Caballero Luna</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img4.png" alt="">
+                                <div class="hover-galeria cta4">
+                                    <p><b>Futbol</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img1.png">
+
+                                <div class="hover-galeria cta1">
+                                    <p><b>hands</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img2.png">
+                                <div class="hover-galeria cta2">
+                                    
+                                    <p><b>kiss</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img3.jpg">
+                                <div class="hover-galeria cta3">
+                                    <p><b>Caballero Luna</b></p>
+                                </div>
+                            </div>
+                            
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img4.png" alt="">
+                                <div class="hover-galeria cta4">
+                                    <p><b>Futbol</b></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-        
-                    <!-- <div class="modal-container">
-                        <img src="img/cards/1.jpeg" alt="">
-        
-                        <div class="modal modal-close">
-                            <p class= "close">X</p>
-        
-                            <div class="modal-textos">
-                                <h3 class="titulo-carta titulo">Titulo</h3>
-                                <p class="descripcion-carta">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt rem, dolor eius, laborum a, atque laudantium expedita eligendi eveniet nam. Quam tempora dolorem sapiente rem quod sit, non ea.</p>
-        
-                            </div>
-                        </div>
-                    </div> -->
                 </section>
-
-                <!-- <div class="py-2 overflow-x-auto">
-                    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                        <table class="min-w-full">
-                            <thead class="bg-gray-100 ">
-                                <tr>
-                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                            Nombre Cliente
-                                    </th>
-                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                            Teléfono
-                                    </th>
-                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                            Empresa
-                                    </th>
-                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                            Acciones
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="listado-clientes" class="bg-white"></tbody>
-                        </table>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
-<<<<<<< HEAD
+
+
+    <footer>
+        <div class="icon-footer">
+            <img src="assets/img/resources/unerg-logo-blanco.png" alt="">
+            <div class="footer-textos-icon">
+                <h4>GPSC | UNERG</h4>
+                <p>Proyectos de Servicio Comunitario</p>
+            </div>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+    </footer>
+
     <script src="js/funciones.js"></script>
-    <script src="js/app.js"></script>
-=======
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/funciones.js"></script>
     <!-- <script src="assets/js/app.js"></script> -->
-    <script src="assets/js/registrar.js"></script>
->>>>>>> e068a692ce98f656453e3c6588b633981494101d
+    <!-- <script src="assets/js/registrar.js"></script> -->
 </body>
 </html>

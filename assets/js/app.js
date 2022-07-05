@@ -1,125 +1,79 @@
-(function(){
+// Variables
+let buscador =  document.querySelector('#buscador');
+let proyectos = document.querySelectorAll('.imagen-port');
 
-    let DB;
+let user = false;
 
-    const listadoClientes = document.querySelector('#listado-clientes');
+// Llamada de metodo
+eventListeners();
 
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log('Ventana cargada')
+function eventListeners(){
 
-        crearDB();
+    if(!user){
 
-        if(window.indexedDB.open(['crm'], 1)){
-            obtenerClientes();
-        }
+        // Ocultando todo para que sea modo vistante
+        document.querySelector('.NuevoProyecto-btn').style = 'display:none;';
+        document.querySelector('.titulo-header').textContent = 'GPSC - UNERG';
+        document.querySelector('#exit').style = 'display:none;';
+        document.querySelector('#login').style = 'display: flex;';
+    }
+    else
+    {
+        // Mostrando funciones para usuario administrador
+        document.querySelector('.NuevoProyecto-btn').style = 'display:flex;';
+        document.querySelector('.titulo-header').textContent = 'Administrador | GPSC - UNERG';
+        document.querySelector('#exit').style = 'display:flex;';
+        document.querySelector('#login').style = 'display: none;';
 
-        listadoClientes.addEventListener('click', eliminarRegistro);
-    })
-
-    function eliminarRegistro(e){
-        // console.log(e.target.classList);
-
-        if(e.target.classList.contains('eliminar')){
-            const idEliminar = Number( e.target.dataset.cliente );
-
-            const confirmar = confirm('¿Desea eliminar a este cliente?');
-
-            if(confirmar){
-                const transaction = DB.transaction(['crm'], 'readwrite');
-                const OS = transaction.objectStore('crm');
-
-                OS.delete(idEliminar);
-
-                transaction.oncomplete = function(){
-                    console.log('Cliente Eliminado');
-
-                    e.target.parentElement.parentElement.remove();
-                }            
-
-                transaction.onerror = function() {
-                    console.log('Hubo un error');
-                }
-            }
-        }
     }
 
-    function crearDB(){
-        const crearDB = window.indexedDB.open('crm', 1);
+    // Cuando le den click a la pantalla
+    window.addEventListener('click', function(e){
 
-        crearDB.onerror = () => {
-            console.log('Hubo un error');
+        
+        if(e.target.parentElement.classList == 'imagen-port' || e.target.parentElement.parentElement.classList == 'imagen-port'){
+
+            console.log(e.target);
+            window.location = "assets/resources/detalles.html";
         }
 
-        crearDB.onsuccess = () => {
 
-            DB = crearDB.result;
 
+
+
+        // Cerrando Sesion
+        if(e.target == exit){
+            
+            // Llevando al cliente al login
+            window.location = "assets/resources/login.html";
         }
 
-        crearDB.onupgradeneeded = function(e){
+        if(!user){
 
-            const db = e.target.result;
-
-            const objectStore = db.createObjectStore('crm', {
-                keyPath: 'id',
-                autoIncrement: true
-            });
-
-            objectStore.createIndex('nombre', 'nombre', { unique: false });
-            objectStore.createIndex('email', 'email', { unique: true });
-            objectStore.createIndex('telefono', 'telefono', { unique: false });
-            objectStore.createIndex('empresa', 'empresa', { unique: false });
-            objectStore.createIndex('id', 'id', { unique: true });
-
-            console.log('DB Lista y creada')
+            // Ocultando todo para que sea modo vistante
+            document.querySelector('.NuevoProyecto-btn').style = 'display:none;';
+            document.querySelector('.titulo-header').textContent = 'GPSC - UNERG';
         }
-    }
+    });
 
-    function obtenerClientes(){
-        const abrirConexion = window.indexedDB.open('crm', 1);
+    // Busqueda de un proyecto
+    document.addEventListener('keyup', e => {
 
-        abrirConexion.onerror = function(){
-            console.log('Hubo un error');
-        }
+        // Se recorren todos los proyectos disponibles
+        proyectos.forEach( proyecto => {
 
-        abrirConexion.onsuccess = function(){
-            DB = abrirConexion.result;
+            // Variable que tiene el nombre del proyecto
+            let Nombre_Proyecto = proyecto.lastElementChild.lastElementChild.textContent.toLowerCase();
 
-            const objectStore = DB.transaction('crm').objectStore('crm');
-
-            objectStore.openCursor().onsuccess = function(e){
-
-                const cursor = e.target.result;
-
-                if(cursor){
-                    const {nombre, email, telefono, empresa, id} = cursor.value;
-
-                    listadoClientes.innerHTML += ` 
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <p class="text-sm leading-5 font-medium text-gray-700 text-lg  font-bold"> ${nombre} </p>
-                                <p class="text-sm leading-10 text-gray-700"> ${email} </p>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
-                                <p class="text-gray-700">${telefono}</p>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200  leading-5 text-gray-700">    
-                                <p class="text-gray-600">${empresa}</p>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
-                                <a href="editar-cliente.html?id=${id}" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a>
-                                <a href="#" data-cliente="${id}" class="text-red-600 hover:text-red-900 eliminar">Eliminar</a>
-                            </td>
-                        </tr>
-                    `;
-
-
-                    cursor.continue();
-                }
-                else{
-                    console.log('No hay mas registros');
-                }
-            }
-        }
-    }
-})();
+            /*  Si se encuentra las letras del proyecto, se ira borrando las que no coinciden.
+                
+                (Filtro es una etiqueta la cual en el archivo CSS tiene como unica
+                propiedad un display:none, para asi hacer desaparecer todo contenido
+                que tenga esta etiqueta)
+            */
+            Nombre_Proyecto.includes( e.target.value.toLowerCase())
+                ? proyecto.classList.remove('filtro')                //Se remueve la etiqueta filtro
+                : proyecto.classList.add('filtro');                 //Se añade la etiqueta filtro
+        });
+    });
+}

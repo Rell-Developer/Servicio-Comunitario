@@ -1,35 +1,42 @@
 // Variables
-const iconoMenu = document.querySelector('#icono-menu'),
-    menu = document.querySelector('#menu');
+const iconoMenu     = document.querySelector('#icono-menu'),
+    menu            = document.querySelector('#menu');
 
-let cerrar = document.querySelector(".close");
-let cerrarV = document.querySelector(".close-video");
-let abrir = document.querySelectorAll(".cta")[0];
-let modal = document.querySelector(".modal");
-let modalC = document.querySelector(".NuevoProyecto-btn");
-let exit = document.querySelector("#exit");
-<<<<<<< HEAD:js/registrar.js
-let add = document.querySelector('#add-student')
-let bach=  document.querySelector('.bachilleres')
+let cerrar          = document.querySelector(".close");
+let cerrarV         = document.querySelector(".close-video");
+let abrir           = document.querySelectorAll(".cta")[0];
+let modal           = document.querySelector(".modal");
+let modalC          = document.querySelector(".NuevoProyecto-btn");
+let exit            = document.querySelector("#exit");
+let add             = document.querySelector('#add-student');
+let bach            =  document.querySelector('.bachilleres');
 
-let minusBtn = document.querySelector("#del-student")
-let inputs = document.querySelectorAll(".input-change")
+let minusBtn        = document.querySelector("#del-student");
+let inputs          = document.querySelectorAll(".input-change");
+let requeridos      = document.querySelectorAll('.requerid');
+let btn_registrar   = document.querySelector('#btn-register');
 
-let imgUp = document.getElementById("img-uploader")
-let imgUpMore = document.getElementById("img-uploader-more")
-let videoUp = document.getElementById("video-uploader");
-let vdsUp = document.getElementById('add-vds');
+let imgUp           = document.getElementById("img-uploader")
+let imgUpMore       = document.getElementById("img-uploader-more");
+let videoUp         = document.getElementById("video-uploader");
+let vdsUp           = document.getElementById('add-vds');
 
-let miniatura = document.querySelector("#img-min")
-let imgs = document.querySelector('#img-more')
-let del_imgs = document.querySelector('#del-imgs')
+let miniatura       = document.querySelector("#img-min");
+let imgs            = document.querySelector('#img-more');
+let del_imgs        = document.querySelector('#del-imgs');
+let del_videos      = document.querySelector('#del-vds');
 
-let imgs_list = [];
-let video_list = [];
-let imgPre = document.querySelector(".imgPreview")
-=======
-let addBach = document.querySelector("#add-bach");
->>>>>>> e068a692ce98f656453e3c6588b633981494101d:assets/js/registrar.js
+let imgs_list       = [];
+let video_list      = [];
+let imgPre          = document.querySelector(".imgPreview");
+let addBach         = document.querySelector("#add-bach");
+let miniatura_disponible = false;
+
+// Lista de ubicacion
+let estados_list    = document.querySelector('#estados-list');
+let municipios_list = document.querySelector('#municipios-list');
+let parroquias_list = document.querySelector('#parroquia-list');
+let ciudades_list   = document.querySelector('#ciudades-list')
 
 // Booleano para el modal
 let ModalCerrado;
@@ -38,37 +45,84 @@ let ModalCerrado;
 eventListeners();
 
 function eventListeners(){
+    
+    // Para cargar el JSON de estados
+    document.addEventListener('DOMContentLoaded', function(e){
+
+        // Cargar JSON
+        cargarJSON('estado', null, null, null, null);
+        
+    });
+
+    // Cargar la lista de municipios y ciudades
+    estados_list.addEventListener('click', function(){
+        
+        // Llenar listas
+        if( estados_list.value != ''){
+            
+            cargarJSON('municipios', document.querySelector('#municipios-list'), estados_list, 'estado', 'municipio');
+            cargarJSON('ciudades', document.querySelector('#ciudades-list'), estados_list, 'estado', 'municipio');
+        }
+    });
+
+    // Cargar la lista de Parroquias
+    municipios_list.addEventListener('click', function(){
+
+        // Llenar listas
+        if( municipios_list.value != ''){
+            
+            cargarJSON('parroquias', document.querySelector('#parroquia-list'), municipios_list, 'municipios', 'parroquias');
+        }
+    });
 
     //Para abrir el menu
     window.addEventListener('click', function(e) {
 
-        // imgUp = document.getElementById("img-uploader") 
-        // console.log(imgUp)
-
+        // Agregar miniatura
         if(e.target.id === 'img-min'){
             
             imgUp.click()
             
         }
 
+        // Agregar mas imagenes
         if(e.target.id === "add-imgs"){
             
             imgUpMore.click()
             
         }
 
+        // Agregando mas imagenes en el modal
         if(e.target.id === 'img-more'){
 
             // Bajando el model
             document.querySelector('.modal-container').style.opacity = "1";
             document.querySelector('.modal-container').style.visibility = "visible";
-            // modal.classList.toggle("modal-close");
             document.querySelector('.modal').classList.toggle("modal-close");
 
 
             document.querySelector('.modal-container').style.transform = 'translateY(0%)';
         }
 
+        //Verificando a donde le dio click
+        if(e.target.id == 'add-student'){
+
+            addStudent()
+            
+            // Actualizando la lista de inputs
+            inputs = document.querySelectorAll(".input-change")
+            requeridos  = document.querySelectorAll(".requerid")
+        }
+        else if(e.target.id == "del-student"){
+
+            deleteStudent()
+
+            // Actualizando la lista de inputs
+            inputs      = document.querySelectorAll(".input-change")
+            requeridos  = document.querySelectorAll(".requerid")
+        }
+
+        // Agregando video, para bajar el modal
         if(e.target.id === 'video'){
 
             // Bajando el model
@@ -79,28 +133,8 @@ function eventListeners(){
 
 
             document.querySelector('.modal-container-video').style.transform = 'translateY(0%)';
-        }
-        
-        if(e.target.id === "add-vds"){
-            // videoUp.click();
-        }
+        }        
 
-        //Verificando a donde le dio click
-        if(e.target.id == 'add-student'){
-
-            addStudent()
-            
-            // Actualizando la lista de inputs
-            inputs = document.querySelectorAll(".input-change")
-        }
-        else if(e.target.id == "del-student"){
-
-            deleteStudent()
-
-            // Actualizando la lista de inputs
-            inputs = document.querySelectorAll(".input-change")
-        }
-        
         // Verificando cantidad de estudiantes
         if(bach.childElementCount > 3){
             MinusButton(true)
@@ -113,10 +147,10 @@ function eventListeners(){
         if(e.target == exit){
             
             // Llevando al cliente al login
-            window.location = "resources/login.html";
+            window.location = "assets/resources/login.html";
         }
 
-<<<<<<< HEAD:js/registrar.js
+
         // Registrando
         if(e.target.id == "register"){
 
@@ -125,17 +159,30 @@ function eventListeners(){
             // Verificando si estan vacios
             let vacio = false
 
-            for (let key in inputs) {
+            for (let key in requeridos) {
                 
                 //Verificando si al menos hay uno para dar la alerta
-                if(inputs[key].value == ''){
-                    vacio = true
+                if(requeridos[key].value == ''){
+                    vacio = true;
                 }
             }
 
             if(vacio){
                 alert("Todos los campos son obligatorios, por favor, llenarlos")
                 vacio = false
+            }else if(!miniatura_disponible){
+
+                alert('Agrega una miniatura al nuevo proyecto');
+            }
+            else if(imgs_list.length == 0){
+
+                alert('Agrega una imagen')
+            }
+            else{
+
+                alert('registrando datos')
+                console.log(document.getElementById('img-foto'));
+                document.querySelector('#register-form').submit();
             }
 
         }else if(e.target.id == "clean"){ //Borrando
@@ -153,7 +200,7 @@ function eventListeners(){
         // Borrar imagenes de la lista
         if(e.target == del_imgs){
             
-            //
+            //Si no hay imagenes subidas
             if(imgs_list == null){
                 // agregarColor(miniatura, document.querySelector('#imagen-miniatura'), "border: none;", "stroke: #0670e9");
                 agregarColor( document.querySelector('#img-more'), document.querySelector('#imagen-more'), "border: none;", "stroke: #0670e9");
@@ -181,81 +228,58 @@ function eventListeners(){
                 }
             }
         }
+
+        // Borrar videos de la lista
+        if(e.target == del_videos){
+            
+            console.log(video_list)
+            //Si no hay imagenes subidas
+            if(video_list == null){
+                // quitando color
+                agregarColor( document.querySelector('#video'), document.querySelector('#video-uploader'), "border: none;", "stroke: #0670e9");
+            }
+
+            // Verificando si hay imagenes por borrar
+            if(video_list === undefined){
+                alert('No ha subido alguna imagen.')
+            }else{
+                let video_a_borrar = document.querySelector('.contenedor-video').lastElementChild;
+
+                // Comprobando si hay algun video para borrar
+                if(video_a_borrar != null){
+                    
+                    // Borrando las imagenes de la vista
+                    document.querySelector('.contenedor-video').removeChild(video_a_borrar);
+
+                    // Borrando las imagenes de la lista
+                    video_list.pop()
+
+                    // Avisando
+                    alert('Eliminando...')
+                }
+                else if(video_a_borrar == null){ //Mensaje para cuando el arreglo esta vacio
+                    alert('No hay video para borrar.')
+                }
+            }
+        }
         
+        //Si borran todas las imagenes subidas
         if(imgs_list[0] == null || imgs_list[0] == undefined){
-            // agregarColor(miniatura, document.querySelector('#imagen-miniatura'), "border: none;", "stroke: #0670e9");
+            //Se quita el color cuando se note que no hay archivos en la lista de imagenes
             agregarColor( document.querySelector('#img-more'), document.querySelector('#imagen-more'), "border: none;", "stroke: #0670e9");
         }
-=======
+
+        //Si borran todos los videos subidos
+        if(video_list[0] == null || video_list[0] == undefined){
+            //Se quita el color cuando se note que no hay archivos en la lista de imagenes
+            agregarColor( document.querySelector('#video'), document.querySelector('#video-uploader'), "border: none;", "stroke: #0670e9");
+        }
+
+        //Se agrega un bachiller
         if(e.target == addBach){
             
             agregarBachiller();
         }
-
->>>>>>> e068a692ce98f656453e3c6588b633981494101d:assets/js/registrar.js
-        // Recorrida y condicional para las tarjetas del menu
-        // for(let i = 1; i <= 8; i++){
-
-        //     // Validacion del elemento seleccionado en el menu
-        //     if((e.target == document.querySelector(`.cta${i}`)) || e.target == document.querySelector(`.text-Op1`) || (e.target == document.querySelector(`.hand${i}`))){
-
-        //         let img;
-                
-        //         //Transformacion 
-        //         if(e.target == document.querySelector(`.text-Op1`)){
-
-        //             console.log(`Es la opcion #${i}`);
-        //             console.log(document.querySelector(`.cta${i} p`))
-        //         }
-
-        //         // Verificacion de target
-        //         if(e.target == document.querySelector(`.hand${i}`) || e.target == document.querySelector(`.cta${i} p`)){
-
-        //             img = e.target.parentElement.parentElement.children[0].src;
-        //         }
-        //         else{
-
-        //             img = e.target.parentElement.children[0].src;
-        //         }
-
-        //         // Verificacion para poner el titulo, descripcion y precio correspondiente
-        //         switch (i) {
-                    
-        //             case 1:
-        //                 creacionModel(document.querySelector('.modal-container'), img, `Mision`, 'Realizar mantenimiento a todo dispositivo tecnológico del día a día, brindando una buena calidad de servicio, atención al cliente y todo a un excelente precio con el fin de lograr la satisfacción del cliente.');
-        //             break;
-                
-        //             case 2:
-        //                 creacionModel(document.querySelector('.modal-container'), img, `Vision`, 'Ofrecer el mejor servicio de mantenimiento a nivel nacional, con sedes distribuidas en todo el país para la facilidad del cliente al momento en que su dispositivo necesite una limpieza o revisión, agregado a ello, realizar talleres para la capacitación de personas referente al mantenimiento de un computador.');
-        //             break;
-                
-        //             case 3:
-        //                 creacionModel(document.querySelector('.modal-container'), img, `Objetivo`, 'Nuestro objetivo es ofrecer el mejor servicio técnico en mantenimiento y recuperación de dispositivos inteligentes, agregado a ello la mejor capacitación de procesos para mantener limpio tu dispositivo como tanto en el hardware y software del sistema.');
-        //             break;
-
-        //             case 4:
-        //                 creacionModel(document.querySelector('.modal-container'), img, `Sobre Nosotros`, 'Trabajando desde el año 2016 para prestar el mejor servicio de mantenimiento de dispositivos, con personal calificado en el area, herramientas de ultima generacion, su equipo quedara como nuevo al tener nuestra limpieza y optimizacion.');
-        //             break;
-                    
-        //             default:
-        //                 break;
-        //         }
-                
-        //         //Bajando el model
-        //         modalC.style.opacity = "1";
-        //         modalC.style.visibility = "visible";
-        //         modal.classList.toggle("modal-close");
-        
-        //         document.querySelector('.modal-container').style.transform = 'translateY(0%)';
-        //     }
-
-        //     // Validacion del elemento seleccionado en el nav desplegable en el diseño responsivo
-        //     if(e.target == document.querySelector(`.op${i}`)){
-
-        //         // Ocultar Menu lateral en el diseño responsivo
-        //         OcultarMenu();
-        //     }
-        // }
     });
 
     //Efecto del boton cerrar
@@ -309,8 +333,50 @@ function preview(event) {
 
     leer_img.readAsDataURL(event.target.files[0])
     
+    // Si hay miniatura
+    miniatura_disponible = true;
+
     //agregando el color 
     agregarColor(miniatura, document.querySelector('#imagen-miniatura'), "border: 5px solid #1df51d;", "stroke: #1df51d");
+}
+
+// Funcion para los videos
+function SubirVideo(event){
+
+    console.log(event.srcElement.files)
+    
+    // Se obtiene el arreglo de archivos
+    let files = event.srcElement.files;
+    
+    //Archivos aceptados
+    let supportedVideos = ["video/mp4", "image/mkv"];
+    let NoValidos = false; //Elemento no validos
+
+    //Se recorre el arreglo de archivos
+    for (let  i = 0; i < files.length; i++){
+        video = files[i]; //Se obtiene un video
+
+        //Se verifica si el archivo es mp4 o mkv
+        if(supportedVideos.indexOf(video.type) != -1){
+
+            //Se agrega a la lista de videos
+            video_list = [...video_list, files[i]];
+
+            //se muestra miniatura
+            createPreviewVideo(video);
+        }
+        else{
+            NoValidos = true;
+        }
+    }
+
+    //Mensaje
+    if(NoValidos){
+        alert('Se encontraron archivos no validos.')
+    }else if(!NoValidos){
+        alert("Todos los archivos subidos con exito.")
+        agregarColor( document.querySelector('#video'), document.querySelector('#video-uploader'), "border: 5px solid #1df51d;", "stroke: #1df51d");
+    }
 }
 
 // Funcion para mas imagenes
@@ -344,39 +410,7 @@ imgUpMore.addEventListener("change", function(){
     }
 });
 
-// Funcion para los videos
-videoUp.addEventListener("change", function(){
-
-    // console.log(this.files)
-    let files = this.files;
-    //imgs_list;
-    let supportedVideos = ["video/mp4", "video/mkv"];
-    let NoValidos = false; //Elemento no validos
-
-    for (let  i = 0; i < files.length; i++){
-        video = files[i];
-
-        console.log(video)
-
-        video_list = [...video_list, files[i]];
-
-        if(supportedVideos.indexOf(video.type) != -1){
-            createPreviewVideo(video);
-        }
-        else{
-            NoValidos = true;
-        }
-    }
-
-    //Mensaje
-    if(NoValidos){
-        alert('Se encontraron archivos no validos.')
-    }else if(!NoValidos){
-        alert("Todos los archivos subidos con exito.")
-        agregarColor( document.querySelector('#video'), document.querySelector('#video-uploader'), "border: 5px solid #1df51d;", "stroke: #1df51d");
-    }
-});
-
+//Preview para las imagenes
 function createPreview(file){
     let imgCodified = URL.createObjectURL(file);
 
@@ -465,7 +499,7 @@ function OcultarMenu() {
     }, 250);
 }
 
-<<<<<<< HEAD:js/registrar.js
+
 // Añiendo otro campo para agregar mas estudiantes
 function addStudent(){
 
@@ -482,8 +516,8 @@ function addStudent(){
         `
 
     inputs.innerHTML = `        
-        <input class="input-change" type="text" name="bachiller" id="" placeholder="Nombre y Apellido">
-        <input class="input-change" type="text" name="bachiller-ci" id="" placeholder="20000000">
+        <input class="input-change requerid" type="text" name="bachiller" id="" placeholder="Nombre y Apellido">
+        <input class="input-change requerid" type="text" name="bachiller-ci" id="" placeholder="20000000">
         <input class="input-change" type="text" name="bachiller-tlf" id="" placeholder="04121234567">
     `
     
@@ -517,7 +551,9 @@ function agregarColor(borde, img_svg, valor1, valor2){
 
     borde.style = valor1; 
     img_svg.style = valor2;
-=======
+}
+
+// Agrega un bachiller al formulario
 function agregarBachiller(){
 
     console.log(addBach.parentElement.classList.value);
@@ -537,5 +573,174 @@ function agregarBachiller(){
     `; 
 
     console.log(addBach.parentElement);
->>>>>>> e068a692ce98f656453e3c6588b633981494101d:assets/js/registrar.js
+}
+
+// Cargar el JSON y sus inputs
+function cargarJSON(list, select, lista_anterior, key_list, key){
+
+    // Verificando si el estado estaba vacio
+    if( estados_list.length == 1){
+        
+        // Estados
+        fetch("assets/json/venezuela.json")
+            .then(respuesta => respuesta.json())
+            .then( items => {
+                items.forEach(item => {
+
+                    let option = document.createElement('option');
+                    
+                    // console.log(item['estado']);
+                    // console.log(item[list]);
+
+                    // option.textContent = item['estado'];
+                    option.textContent = item[list];
+
+                    estados_list.append(option);
+                    
+                });
+            });
+    }
+
+    // Verificacion para agregar los municipios
+    if( estados_list.length > 1 && list == "municipios"){
+
+        // console.log(select.childElementCount)
+        if( select.childElementCount > 1){
+
+            for (let i = select.childElementCount; i > 1; i--) {
+
+                
+                select.removeChild( select.lastElementChild );
+                // console.log(select.childElementCount)
+            }
+
+            for (let i = ciudades_list.childElementCount; i > 1; i--) {
+
+                
+                ciudades_list.removeChild( ciudades_list.lastElementChild );
+                // console.log(select.childElementCount)
+            }
+        }
+        
+        // Municipios
+        fetch("assets/json/venezuela.json")
+            .then(respuesta => respuesta.json())
+            .then( items => {
+                items.forEach(item => {
+
+                    if( estados_list.value == item['estado']){
+                        
+                        item[list].forEach( municipio => {
+                        
+                            let option = document.createElement('option');
+                        
+                            // console.log(municipio['municipio'])
+                            option.textContent = municipio['municipio'];
+
+                            select.append(option);
+                        });
+                    }
+                    // option.textContent = item['estado'];
+                });
+            });
+
+        for (let i = parroquias_list.childElementCount; i > 1; i--) {
+
+            parroquias_list.removeChild( parroquias_list.lastElementChild );
+            // console.log(select.childElementCount)
+        }
+    }
+
+    // Verificacion para agregar las parroquias
+    if( municipios_list.length > 1){
+        // console.log(select.childElementCount)
+        if( select.childElementCount > 1){
+            
+            // console.log(`Tiene en total ${select.childElementCount} elementos.`)
+
+            for (let i = select.childElementCount; i > 1; i--) {
+
+                
+                select.removeChild( select.lastElementChild );
+                // console.log(select.childElementCount)
+            }
+        }
+        
+        //Parroquias
+        fetch("assets/json/venezuela.json")
+            .then(respuesta => respuesta.json())
+            .then( items => {
+                items.forEach(item => {
+
+                    // Verificacion de estado
+                    if( estados_list.value == item['estado']){
+                        
+                        // Recorriendo los municipios
+                        item['municipios'].forEach( municipio => {
+
+                            // Verificando el municipio
+                            if( municipios_list.value == municipio['municipio']){
+
+                                // Recorriendo las parroquias
+                                municipio['parroquias'].forEach( parroquia => {
+
+                                    // Agregando la etiqueta option
+                                    let option = document.createElement('option');
+
+                                    // Agregando una parroquia como opcion
+                                    option.textContent = parroquia;
+
+                                    // Anexando al HTML
+                                    select.append(option);
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+    }
+
+    // Verificacion para agregar las ciudades
+    if( estados_list.length > 1 && list == 'ciudades'){
+
+        for (let i = select.childElementCount; i > 1; i--) {
+
+            select.removeChild( select.lastElementChild );
+            // console.log(select.childElementCount)
+        }
+        
+        // Ciudades
+        fetch("assets/json/venezuela.json")
+        .then(respuesta => respuesta.json())
+        .then( items => {
+            items.forEach(item => {
+
+                if( estados_list.value == item['estado']){
+                    
+                    item[list].forEach( ciudad => {
+                    
+                        
+                        let option = document.createElement('option');
+                    
+                        // console.log(municipio['municipio'])
+                        option.textContent = ciudad;
+
+                        select.append(option);
+                    });
+                }
+                // option.textContent = item['estado'];
+            });
+        });
+    }
+
+    // Verificando que sea distrito capital
+    if( estados_list.value == 'Distrito Capital'){
+        
+        let option = document.createElement('option');
+                    
+        // console.log(municipio['municipio'])
+        option.textContent = 'Caracas';
+
+        ciudades_list.append(option);
+    }
 }

@@ -16,7 +16,7 @@
 
     // Validacion
     if($filas){
-        header("location: ../templates/home.html");
+        header("location: ../../index.html");
     }
     else
     {
