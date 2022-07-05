@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Insertar Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon.ico">
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.svg" color="#000ac9">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>GPSC - UNERG</title>
+    <link rel="stylesheet" href="assets/css/administrar.css">
+</head>
+<body>
+    <nav class='nav-fixed'>
+        <a href="#" rel="noopener noreferrer" class="icon">
+            <img src="assets/img/resources/unerg-logo-blanco.png" alt="">
+        </a>
+
+        <a href="#" rel="noopener noreferrer" class = "opciones">Inicio</a>
+        <!-- <a href="#Contacto" rel="noopener noreferrer" class = "opciones">Opciones</a> -->
+
+        <a href="assets/resources/login.html" id="login">Iniciar Sesion</a>
+        <svg id = "exit" class="w-6 h-6" width = "40px" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+
+        <!-- Menu de hamburguesa -->
+        <div class="icono-menu">
+            <img src="assets/img/icons/open-menu.png" id="icono-menu">
+        </div>
+
+        <!-- Lista de opciones -->
+        <div class="cont-menu active" id="menu">
+            <ul>
+                <a href="#" class="op1">Inicio</a>
+                <a href="#Contacto" class="op6">Opciones</a>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </ul>
+        </div>
+    </nav>
+
+    <form id="mostrar-proyectos"></form>
+    
+    <div class="contenido-general">
+        <div class="header">
+            <h1 class="titulo-header">Administrador | GPSC - UNERG</h1>
+            <p class="">Gestor de Proyectos de Servicio Comunitario</p>
+
+            <div class="content-buscador">
+                <input type="text" class="buscador" id="buscador">
+            </div>
+
+            <div class="btns-header">
+                <a  
+                    href="#Contenido" 
+                    class="proyectos-btn"
+                >Proyectos</a>
+                <a 
+                    class="NuevoProyecto-btn" href="registrar.html"
+                >Nuevo Proyecto</a>
+            </div>
+        </div>
+
+        <div class="Contenido" id="Contenido">
+            <h2 class="titulo-contenido">Proyectos</h2>
+
+            <div class="contenido-proyectos">
+
+                <section class="portafolio" id="Portafolio">
+                    <div class="contenedor">
+                        <div class="galeria-port">
+                            <!-- <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img1.png">
+
+                                <div class="hover-galeria cta1">
+                                    <p><b>Manos</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img2.png">
+                                <div class="hover-galeria cta2">
+                                    
+                                    <p><b>Beso</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img3.jpg">
+                                <div class="hover-galeria cta3">
+                                    <p><b>Moon Knight</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img4.png" alt="">
+                                <div class="hover-galeria cta4">
+                                    <p><b>Muga Fubol</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img1.png">
+
+                                <div class="hover-galeria cta1">
+                                    <p><b>hands</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img2.png">
+                                <div class="hover-galeria cta2">
+                                    
+                                    <p><b>kiss</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img3.jpg">
+                                <div class="hover-galeria cta3">
+                                    <p><b>Caballero Luna</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img4.png" alt="">
+                                <div class="hover-galeria cta4">
+                                    <p><b>Futbol</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img1.png">
+
+                                <div class="hover-galeria cta1">
+                                    <p><b>hands</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img2.png">
+                                <div class="hover-galeria cta2">
+                                    
+                                    <p><b>kiss</b></p>
+                                </div>
+                            </div>
+
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img3.jpg">
+                                <div class="hover-galeria cta3">
+                                    <p><b>Caballero Luna</b></p>
+                                </div>
+                            </div>
+                            
+                            <div class="imagen-port">
+                                <img src="assets/img/resources/cards/img4.png" alt="">
+                                <div class="hover-galeria cta4">
+                                    <p><b>Futbol</b></p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="icon-footer">
+            <img src="assets/img/resources/unerg-logo-blanco.png" alt="">
+            <div class="footer-textos-icon">
+                <h4>GPSC | UNERG</h4>
+                <p>Proyectos de Servicio Comunitario</p>
+            </div>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+    </footer>
+
+    <!-- <script src="js/funciones.js"></script> -->
+    <script src="assets/js/app.js"></script>
+    <!-- <script src="assets/js/funciones.js"></script> -->
+    <!-- <script src="assets/js/mostrar-proyectos.js"></script> -->
+
+    <script src="assets/php/mostrar-proyectos.js"></script>
+</body>
+</html>

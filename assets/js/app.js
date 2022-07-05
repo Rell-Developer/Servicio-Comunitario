@@ -1,13 +1,16 @@
 // Variables
-let buscador =  document.querySelector('#buscador');
-let proyectos = document.querySelectorAll('.imagen-port');
+let buscador            =   document.querySelector('#buscador');
+let proyectos           =   document.querySelectorAll('.imagen-port');
+let mostrar_proyectos   =   document.getElementById('mostrar-proyectos');
 
 let user = false;
+let proy_mostrados = false;
 
 // Llamada de metodo
 eventListeners();
 
 function eventListeners(){
+    
 
     if(!user){
 
